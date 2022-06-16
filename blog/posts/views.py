@@ -1,3 +1,8 @@
+from django.http import HttpResponse, JsonResponse
+import os
+import urllib.parse
+
+
 # Feel free to move this to a new file if you are carrying out the 'tags' calculation there
 stopWords = [
     "#", "##", "a", "about", "above", "after", "again", "against", "all", "am",
@@ -21,9 +26,27 @@ stopWords = [
     "yourself", "yourselves"
 ]
 
+
+
 def post(request, slug):
-    pass
+    dir = os.path.join(os.getcwd(), "assets/posts")
+    result = {
+        "post": {
+            "content": open(os.path.join(dir, slug) + ".md", "r").read(),
+            "tags": []
+        }
+    }
+    return JsonResponse(result, safe=True)
 
 
 def posts(request):
-    pass
+    dir = os.path.join(os.getcwd(), "assets/posts")
+    ls = os.listdir(dir)
+
+    result = []
+    for f in ls:
+        result.append({
+            "slug": f[:-3],
+            "title": open(os.path.join(dir, f), "r").readlines()[1][7:-1]
+        })
+    return JsonResponse(result, safe=False)
