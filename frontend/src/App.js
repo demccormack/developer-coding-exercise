@@ -3,6 +3,22 @@ import './App.css'
 import React, {Component} from 'react'
 
 class App extends Component {
+
+  constructor(props) {
+      super(props);
+
+      this.state = { posts: [] };
+  }
+
+  componentDidMount() {
+    fetch('http://127.0.0.1:8000')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        this.setState({ ...this.state, posts: data });
+      });
+  }
+
   render() {
     return <div className="App">
       <div className="App-heading App-flex">
