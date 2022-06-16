@@ -6,3 +6,7 @@ node_modules/
 __pycache__
 *.iml
 blog-venv
+frontend/coverage
+frontend/dist
+frontend/node_modules
+frontend/npm-debug.log*

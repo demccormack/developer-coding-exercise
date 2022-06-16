@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "nwb": "^0.25.2"
+  }
+}
