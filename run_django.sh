@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-python3 blog/manage.py runserver 3000
+python3 blog/manage.py runserver 8000
