@@ -1,6 +1,5 @@
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 import os
-import urllib.parse
 
 
 # Feel free to move this to a new file if you are carrying out the 'tags' calculation there
