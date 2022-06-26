@@ -1,0 +1,40 @@
+# Docker composition file. Use `docker-compose up -d` to start the services.
+
+# Warning: If this file is placed in a subdirectory, the volume mappings break.
+
+version: "3.9"
+
+services:
+  dev-code-ex.frontend:
+    container_name: frontend
+    image:    dev-code-ex.frontend:latest
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./frontend/src:/app/src:ro"
+    networks:
+      -    dev-code-ex-network
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - ALL
+
+  dev-code-ex.backend:
+    container_name: backend
+    image:    dev-code-ex.backend:latest
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./blog:/app/blog:ro"
+    networks:
+      -    dev-code-ex-network
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - ALL
+
+networks:
+  dev-code-ex-network:
+    driver: bridge
