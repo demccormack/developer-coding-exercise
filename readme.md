@@ -1,4 +1,42 @@
 # Media Suite Coding Exercise
+
+Note: I had permission to spend longer than 2 hours on this task.
+
+## Running this Solution
+
+Download the source code with
+```
+git clone https://github.com/demccormack/developer-coding-exercise.git
+cd developer-coding-exercise
+```
+
+### Run with Docker
+
+The bash script will build and run the containers for you. Run the following command from bash or WSL:
+```
+./run_docker.sh
+```
+Then visit [http://127.0.0.1:3000/](http://127.0.0.1:3000/)
+
+### Run without Docker
+Run the backend with 
+```
+python3 -m venv blog-venv
+source blog-venv/bin/activate
+pip install -r blog/requirements.txt
+python3 blog/manage.py runserver 8000
+```
+Run the frontend with 
+```
+cd frontend
+npm install
+npm start
+```
+Then visit [http://127.0.0.1:3000/](http://127.0.0.1:3000/)
+
+---
+# Original Instructions
+
 We’d like you to build a blogging platform!
 
 This is designed as a relatively simple exercise to get some code we can talk about in our technical interview. Not all developers have code that they can share with us due to IP restrictions, and this provides a common scenario across all candidates that provides some level of objective measure.
