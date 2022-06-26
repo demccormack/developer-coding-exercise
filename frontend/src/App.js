@@ -12,6 +12,11 @@ import {
 } from 'react-router-dom'
 import { Markup } from 'interweave'
 
+
+var API_ROOT = 'http://127.0.0.1:8000';
+console.log(API_ROOT);
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +43,7 @@ class Menu extends Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:8000')
+    fetch(API_ROOT)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -71,7 +76,7 @@ function Post() {
     const [post, setPost] = useState({tags: []});
 
     useEffect(() => {
-      fetch(`http://127.0.0.1:8000/posts/${params.slug}`)
+      fetch(`${API_ROOT}/posts/${params.slug}`)
         .then(response => response.json())
         .then(data => {
           console.log(data.post);
